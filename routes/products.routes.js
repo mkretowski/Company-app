@@ -17,8 +17,11 @@ router.get('/products/random', async (req, res) => {
     const count = await Product.countDocuments();
     const rand = Math.floor(Math.random() * count);
     const dep = await Product.findOne().skip(rand);
-    if (!dep) res.status(404).json({ message: 'Not found' });
-    else res.json(dep);
+    if (!dep) {
+      res.status(404).json({ message: 'Not found' });
+    } else {
+      res.json(dep);
+    }
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -27,8 +30,11 @@ router.get('/products/random', async (req, res) => {
 router.get('/products/:id', async (req, res) => {
   try {
     const dep = await Product.findById(req.params.id);
-    if (!dep) res.status(404).json({ message: 'Not found' });
-    else res.json(dep);
+    if (!dep) {
+      res.status(404).json({ message: 'Not found' });
+    } else {
+      res.json(dep);
+    }
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -52,7 +58,9 @@ router.put('/products/:id', async (req, res) => {
     if (dep) {
       await Product.updateOne({ _id: req.params.id }, { $set: { name: name, client: client } });
       res.json({ message: 'OK' });
-    } else res.status(404).json({ message: 'Not found...' });
+    } else {
+      res.status(404).json({ message: 'Not found...' });
+    }
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -64,7 +72,9 @@ router.delete('/products/:id', async (req, res) => {
     if (dep) {
       await Product.deleteOne({ _id: req.params.id });
       res.json({ message: 'OK' });
-    } else res.status(404).json({ message: 'Not found...' });
+    } else {
+      res.status(404).json({ message: 'Not found...' });
+    }
   } catch (err) {
     res.status(500).json({ message: err });
   }
