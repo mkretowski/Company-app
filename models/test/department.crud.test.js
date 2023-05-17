@@ -23,7 +23,7 @@ describe('Department', () => {
 
     it('should return all the data with "find" method', async () => {
       const departments = await Department.find();
-      const expectedLength = 3;
+      const expectedLength = 2;
       expect(departments.length).to.be.equal(expectedLength);
     });
     it('should return a proper document by "name" with "findOne" method', async () => {
