@@ -130,6 +130,7 @@ describe('Employee', () => {
 
     after(async () => {
       await Employee.deleteMany();
+      await Department.deleteMany();
     });
   });
 });
