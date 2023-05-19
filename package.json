@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "cross-env set NODE_ENV=test&& mocha \"./{,!(node_modules|client)/**/}*.test.js\"",
-    "test:watch": "onchange \"./**/*.js\" -i -k -- npm test"
+    "test": "cross-env NODE_ENV=test mocha \"./{,!(node_modules|client)/**/}*.test.js\"",
+    "test:watch": "cross-env NODE_ENV=test onchange \"./**/*.js\" -i -k -- npm test"
   },
   "dependencies": {
     "chai": "^4.2.0",
